@@ -1,0 +1,64 @@
+version: "3.9"
+services:
+  csharp:
+    container_name: csharp
+    build:
+      context: ./csharp
+      dockerfile: Dockerfile
+    image: homosapiensother/csharp:1.0.0
+    working_dir: /work
+    entrypoint: /bin/sh
+    stdin_open: true
+    tty: true
+    volumes:
+        - ./csharp/src:/work  
+    ports:
+      - "5000:5000"
+
+  golang:
+    container_name: golang
+    build:
+      context: ./golang
+      dockerfile: Dockerfile 
+    image: homosapiensother/golang:1.0.0
+    working_dir: /work
+    entrypoint: /bin/sh
+    stdin_open: true
+    tty: true
+    volumes:
+        - ./golang/src:/work
+    ports:
+      - "5001:5000"
+    
+
+  nodejs:
+    container_name: nodejs
+    build:
+      context: ./nodejs
+      dockerfile: Dockerfile
+    image: homosapiensother/nodejs:1.0.0
+    working_dir: /work
+    entrypoint: /bin/sh
+    stdin_open: true
+    tty: true
+    volumes:
+        - ./nodejs/src:/work
+    ports:
+      - "5002:5000"
+    
+
+  python:
+    container_name: python
+    build: 
+        context: ./python
+        dockerfile: Dockerfile
+    image: homosapiensother/python:1.0.0
+    working_dir: /work
+    entrypoint: /bin/sh
+    stdin_open: true
+    tty: true
+    volumes:
+        - ./python/src:/work
+    ports:
+      - "5003:5000"
+    
